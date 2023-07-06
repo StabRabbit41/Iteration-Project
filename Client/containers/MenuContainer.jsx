@@ -11,11 +11,12 @@
  */
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../actionCreator/actionCreator.js';
 
 const MenuContainer = (prop) => {
   const dispatch = useDispatch();
+  const state = useSelector( state => state.stretch);
 
   const refreshExercises = async () => {
     const muscle = document.getElementById('muscle').value;
@@ -31,12 +32,16 @@ const MenuContainer = (prop) => {
       .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
   };
 
+  const showFavorites = () => {
+    return dispatch(actions.updateExercisesFromAPI(state.favorites))
+  }
+
   return (
     <div>
       <select
         className="muscle"
         id="muscle"
-        onChange={() => refreshExercises()}
+        onChange={refreshExercises}
       >
         <option value="null">Select a muscle</option>
         <option value="abdominals">Abdominals</option>
@@ -59,14 +64,15 @@ const MenuContainer = (prop) => {
       <select
         className="difficulty"
         id="difficulty"
-        onChange={() => refreshExercises()}
+        onChange={refreshExercises}
       >
         <option value="null">Select a difficulty</option>
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
         <option value="expert">Expert</option>
       </select>
-      <button className="favBtn">Favorites</button>
+
+      <button className="favBtn" onClick={showFavorites}>Favorites</button>
     </div>
   );
 };

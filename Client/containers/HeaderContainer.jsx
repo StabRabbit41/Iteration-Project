@@ -18,7 +18,9 @@ const HeaderContainer = () => {
 
   const logoutHandler = () => {
     dispatch(actions.updateUSER_LOG_OFF());
-    document.getElementById('overlay').style.display = 'block';
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = 1;
+    overlay.style.display = 'block'
   };
 
   return (

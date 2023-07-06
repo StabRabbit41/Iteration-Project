@@ -15,8 +15,6 @@ const login = () => {
       password: pw,
     };
 
-    console.log(loginObj);
-
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,7 +29,9 @@ const login = () => {
           dispatch(actions.updateUSER_LOG_ON(data));
 
           // disable opacity
-          document.getElementById('overlay').style.display = 'none';
+          const overlay = document.getElementById('overlay');
+          overlay.style.opacity = 0;
+          setTimeout(() => overlay.style.display = 'none', 1000);
         } else {
           alert(data.err);
         }

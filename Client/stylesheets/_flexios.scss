@@ -149,6 +149,7 @@ li:last-child {
 }
 
 #overlay {
+  transition: opacity 1s linear;
   position: fixed;
   display: block;
   width: 100%;
