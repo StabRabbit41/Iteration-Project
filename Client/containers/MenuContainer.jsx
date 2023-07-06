@@ -16,7 +16,7 @@ import * as actions from '../actionCreator/actionCreator.js';
 
 const MenuContainer = (prop) => {
   const dispatch = useDispatch();
-  const state = useSelector( state => state.stretch);
+  const state = useSelector((state) => state.stretch);
 
   const refreshExercises = async () => {
     const muscle = document.getElementById('muscle').value;
@@ -33,46 +33,44 @@ const MenuContainer = (prop) => {
   };
 
   const showFavorites = () => {
-    return dispatch(actions.updateExercisesFromAPI(state.favorites))
-  }
+    return dispatch(actions.updateSHOW_FAVORITE());
+  };
 
   return (
     <div>
-      <select
-        className="muscle"
-        id="muscle"
-        onChange={refreshExercises}
-      >
-        <option value="null">Select a muscle</option>
-        <option value="abdominals">Abdominals</option>
-        <option value="abductors">Abductors</option>
-        <option value="adductors">Adductors</option>
-        <option value="biceps">Biceps</option>
-        <option value="calves">Calves</option>
-        <option value="chest">Chest</option>
-        <option value="forearms">Forearms</option>
-        <option value="glutes">Glutes</option>
-        <option value="hamstrings">Hamstrings</option>
-        <option value="lats">Lats</option>
-        <option value="lower_back">Lower Back</option>
-        <option value="middle_back">Middle Back</option>
-        <option value="neck">Neck</option>
-        <option value="quadriceps">Quadriceps</option>
-        <option value="traps">Traps</option>
-        <option value="triceps">Triceps</option>
+      <select className='muscle' id='muscle' onChange={refreshExercises}>
+        <option value='null'>Select a muscle</option>
+        <option value='abdominals'>Abdominals</option>
+        <option value='abductors'>Abductors</option>
+        <option value='adductors'>Adductors</option>
+        <option value='biceps'>Biceps</option>
+        <option value='calves'>Calves</option>
+        <option value='chest'>Chest</option>
+        <option value='forearms'>Forearms</option>
+        <option value='glutes'>Glutes</option>
+        <option value='hamstrings'>Hamstrings</option>
+        <option value='lats'>Lats</option>
+        <option value='lower_back'>Lower Back</option>
+        <option value='middle_back'>Middle Back</option>
+        <option value='neck'>Neck</option>
+        <option value='quadriceps'>Quadriceps</option>
+        <option value='traps'>Traps</option>
+        <option value='triceps'>Triceps</option>
       </select>
       <select
-        className="difficulty"
-        id="difficulty"
+        className='difficulty'
+        id='difficulty'
         onChange={refreshExercises}
       >
-        <option value="null">Select a difficulty</option>
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="expert">Expert</option>
+        <option value='null'>Select a difficulty</option>
+        <option value='beginner'>Beginner</option>
+        <option value='intermediate'>Intermediate</option>
+        <option value='expert'>Expert</option>
       </select>
 
-      <button className="favBtn" onClick={showFavorites}>Favorites</button>
+      <button className='favBtn' onClick={showFavorites}>
+        Show/Hide Favorites
+      </button>
     </div>
   );
 };

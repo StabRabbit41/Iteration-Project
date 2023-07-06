@@ -70,28 +70,28 @@ userController.deleteUser = async (req, res, next) => {
 
 // Add a favorite
 // favorite is passed in through the req.body
-    //Find the user with that username. 
-    //Push onto their favorites array the current favorites array. 
-    //Update the current favorites array. 
+//Find the user with that username.
+//Push onto their favorites array the current favorites array.
+//Update the current favorites array.
 userController.addFavorite = async (req, res, next) => {
   const { username, favorite } = req.body;
-  console.log("entering add favorite middleware");
+  console.log('entering add favorite middleware');
   // console.log("favorite", favorite)
 
   try {
     await User.findOneAndUpdate(
-      { username: username }, 
+      { username: username },
       //push the favorite onto the favorites array
-      { $push: { favorites: favorite } }, 
+      { $push: { favorites: favorite } },
       { new: true }
-      ).then((updatedUser) => {
-        console.log('in UserController.js', updatedUser);
-        res.locals.updatedUser = updatedUser;
-      });
+    ).then((updatedUser) => {
+      //console.log('in UserController.js', updatedUser);
+      res.locals.updatedUser = updatedUser;
+    });
   } catch (err) {
     return next({
       status: 401,
-      log: "error in addFavorite middleware",
+      log: 'error in addFavorite middleware',
       error: err,
     });
   }
@@ -109,12 +109,13 @@ userController.deleteFavorite = async (req, res, next) => {
       { $pull: { favorites: favorite } },
       { new: true }
     ).then((updatedUser) => {
+      console.log('updated user: ', updatedUser);
       res.locals.updatedUserDeletedFavorite = updatedUser;
-    })
+    });
   } catch (err) {
     return next({
       status: 401,
-      log: "error in addFavorite middleware",
+      log: 'error in addFavorite middleware',
       error: err,
     });
   }

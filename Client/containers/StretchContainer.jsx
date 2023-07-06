@@ -19,31 +19,33 @@ const StretchContainer = () => {
   const stretchList = useSelector((state) => state.stretch.exercisesFromAPI);
   const muscle = useSelector((state) => state.stretch.muscle);
   const difficulty = useSelector((state) => state.stretch.difficulty);
+  const favorites = useSelector((state) => state.stretch.favorites);
+  const showFavorites = useSelector((state) => state.stretch.showFavorites);
   // const muscle = document.getElementById('muscle').value;
   // const difficulty = document.getElementById('difficulty').value;
 
   const stretchArr = [];
-
+  const favArr = [];
   if (stretchList.length) {
     for (let i = 0; i < stretchList.length; i++) {
       const item = stretchList[i];
       stretchArr.push(<Stretch exercises={item} />);
     }
-    return <div className="stretchCont">{stretchArr}</div>;
+
+    for (let i = 0; i < favorites.length; i++) {
+      let item = favorites[i];
+      favArr.push(<Stretch exercises={item} />);
+    }
+
+    return (
+      <div className='stretchCont'> {showFavorites ? favArr : stretchArr}</div>
+    );
   }
 
   if (!muscle === 'null' || !difficulty === 'null') {
     return (
       <div>
         <p>Please select a muscle group and difficulty</p>
-      </div>
-    );
-  }
-
-  if (difficulty === 'null') {
-    return (
-      <div>
-        <p>No {muscle} exercises found!</p>
       </div>
     );
   }
