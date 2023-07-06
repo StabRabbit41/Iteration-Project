@@ -35,11 +35,15 @@ const Stretch = (props) => {
   const state = useSelector((state) => state.stretch);
   // insert any logic for the Stretch here
   let FavIcon;
+  const [starClick, changeStarClick] = React.useState(
+    state.favorites.includes(thisExercise)
+  );
 
   const favClicked = async () => {
     const userFavorites = state.favorites;
     const favorite = thisExercise;
     const user = state.loggedInUser;
+    changeStarClick(!starClick);
     console.log('fav clicked');
     if (userFavorites.includes(thisExercise)) {
       console.log('...and deleting');
@@ -62,7 +66,7 @@ const Stretch = (props) => {
         <h3 className='cardHeader'>{thisExercise.name}</h3>
         {/* need logic to make Fav Icon then comment this back in and delete other */}
         <span className='favIcon'>
-          <FAIcon onClick={favClicked} icon={regStar} />
+          <FAIcon onClick={favClicked} icon={starClick ? solidStar : regStar} />
         </span>
       </div>
       <ul>
