@@ -19,7 +19,7 @@ import { useDispatch, useSelector} from 'react-redux'
 import * as actions from '../actionCreator/actionCreator.js'
 
 const Stretch = (props) => {
-  props = props.exercises;
+  const thisExercise = props.exercises;
   const dispatch = useDispatch();
   const state = useSelector( state => state.stretch)
   // insert any logic for the Stretch here
@@ -28,12 +28,15 @@ const Stretch = (props) => {
   const favClicked = () => {
     
     const userFavorites = state.favorites
+    let found = false
 
-    if (userFavorites.includes(props)) {
-      return dispatch(actions.updateREMOVE_FAVORITE(props))
-    } else {
-      return dispatch(actions.updateADD_FAVORITE(props))
-    }
+    userFavorites.forEach ( exercise => {
+      if (exercise == thisExercise) {
+        found = true
+      }
+    });
+
+    return (found) ? dispatch(actions.updateREMOVE_FAVORITE(thisExercise)) : dispatch(actions.updateADD_FAVORITE(thisExercise));
     // get the element property from the event
     // add the exercise object to the favorites array
   }
@@ -42,7 +45,7 @@ const Stretch = (props) => {
   return (
     <div className="stretchCard">
       <div className="cardHeadBox">
-        <h3 className="cardHeader">{props.name}</h3>
+        <h3 className="cardHeader">{thisExercise.name}</h3>
         {/* need logic to make Fav Icon then comment this back in and delete other */}
         <span className="favIcon">
           <FAIcon onClick={favClicked} icon={regStar} />
@@ -50,13 +53,13 @@ const Stretch = (props) => {
       </div>
       <ul>
         <li>
-          <LabeledText label="Equipment" text={props.equipment} />
+          <LabeledText label="Equipment" text={thisExercise.equipment} />
         </li>
         <li>
-          <LabeledText label="Difficulty" text={props.difficulty} />
+          <LabeledText label="Difficulty" text={thisExercise.difficulty} />
         </li>
         <li>
-          <LabeledText label="Instructions" text={props.instructions} />
+          <LabeledText label="Instructions" text={thisExercise.instructions} />
         </li>
       </ul>
     </div>

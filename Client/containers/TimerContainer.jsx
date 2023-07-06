@@ -13,10 +13,11 @@ import React from 'react';
 import { useTimer } from 'react-timer-hook';
 
 function MyTimer({ expiryTimestamp }) {
-  const { seconds, minutes, isRunning, start, pause, resume, restart } =
+  const { seconds, minutes, isRunning, start, pause, resume, restart, } =
     useTimer({
       expiryTimestamp,
-      onExpire: () => console.warn('onExpire called'),
+      autoStart: false,
+      onExpire: () => alert('Stretch complete! Let\'s stretch some more!'),
     });
 
   return (
@@ -41,6 +42,7 @@ function MyTimer({ expiryTimestamp }) {
             const time = new Date();
             time.setSeconds(time.getSeconds() + 60);
             restart(time);
+            pause();
           }}
         >
           Restart

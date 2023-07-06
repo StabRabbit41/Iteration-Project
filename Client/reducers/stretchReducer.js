@@ -60,7 +60,11 @@ const stretchReducer = (state = initialState, action) => {
       })
         .then((data) => data.json())
         .then( data => {
-          return {...state, favorites: data.favorites, exercisesFromAPI: data.favorites}
+          return {
+            ...state, 
+            favorites: data.favorites, 
+            exercisesFromAPI: data.favorites
+          }
         })
         .catch( error => console.log('Error while adding favorites'))
     }
@@ -73,7 +77,11 @@ const stretchReducer = (state = initialState, action) => {
       })
         .then((data) => data.json())
         .then( data => {
-          return {...state, favorites: data.favorites, exercisesFromAPI: data.favorites}
+          return {
+            ...state, 
+            favorites: data.favorites, 
+            exercisesFromAPI: data.favorites
+          }
         })
         .catch( error => console.log('Error while removing favorites'))
     }
