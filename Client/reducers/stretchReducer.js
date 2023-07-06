@@ -14,6 +14,7 @@ const initialState = {
   exercisesFromAPI: [],
   loggedInUser: '',
   favorites: [],
+  showFavorites: false,
   muscle: '',
   difficulty: '',
 };
@@ -22,7 +23,10 @@ const stretchReducer = (state = initialState, action) => {
   switch (action.type) {
     // Get's a list of exercises from the server and updates the array with objects of exercises
     case types.UPDATE_FROM_API: {
-      return { ...state, exercisesFromAPI: action.payload };
+      return {
+        ...state,
+        exercisesFromAPI: action.payload,
+      };
     }
 
     // Logs user on
@@ -52,38 +56,31 @@ const stretchReducer = (state = initialState, action) => {
     }
 
     case types.ADD_FAVORITE: {
+      console.log(action);
       // communicate with the server
-      fetch('http://localhost:3000/user/favorite', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username: state.loggedInUser, favorite: action.payload}),
-      })
-        .then((data) => data.json())
-        .then( data => {
-          return {
-            ...state, 
-            favorites: data.favorites, 
-            exercisesFromAPI: data.favorites
-          }
-        })
-        .catch( error => console.log('Error while adding favorites'))
+      console.log(types.ADD_FAVORITE);
+      console.log('add called');
+      return {
+        ...state,
+        favorites: action.payload,
+      };
     }
 
     case types.REMOVE_FAVORITE: {
-      fetch('http://localhost:3000/user/favorite', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username: state.loggedInUser, favorite: action.payload}),
-      })
-        .then((data) => data.json())
-        .then( data => {
-          return {
-            ...state, 
-            favorites: data.favorites, 
-            exercisesFromAPI: data.favorites
-          }
-        })
-        .catch( error => console.log('Error while removing favorites'))
+      console.log(action);
+      console.log('case:', types.REMOVE_FAVORITE);
+      console.log('delete called');
+      return {
+        ...state,
+        favorites: action.payload,
+      };
+    }
+
+    case types.SHOW_FAVORITE: {
+      return {
+        ...state,
+        showFavorites: !state.showFavorites,
+      };
     }
 
     default:

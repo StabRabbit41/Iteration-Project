@@ -76,7 +76,7 @@ app.get('/api', controller.getStretches, (req, res) => {
 
 // add a favorite
 app.patch('/user/favorite', userController.addFavorite, (req, res) => {
-  console.log('in server.js, res.locals.updatedUser: ', res.locals.updatedUser);
+  //console.log('in server.js, res.locals.updatedUser: ', res.locals.updatedUser);
   return res.status(202).json(res.locals.updatedUser);
 });
 
@@ -85,9 +85,6 @@ app.delete('/user/favorite', userController.deleteFavorite, (req, res) => {
   return res.status(202).json(res.locals.updatedUserDeletedFavorite);
 });
 
-// app.get('/api', controller.getExercise, (req, res) => {
-//     return res.status(200).json(res.locals.apiRes);
-// });
 
 // error if route not found
 app.use(() =>
