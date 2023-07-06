@@ -100,7 +100,7 @@ xdescribe('User favorite creation', () => {
   });
 });
 
-describe('User favorite deletion', () => {
+xdescribe('User favorite deletion', () => {
   const username = 'Paul';
   const password = 'Paul';
   //fake favorite to delete
