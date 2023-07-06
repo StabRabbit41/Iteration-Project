@@ -69,7 +69,7 @@ const MenuContainer = (prop) => {
       </select>
 
       <button className='favBtn' onClick={showFavorites}>
-        Show/Hide Favorites
+        {state.showFavorites ? 'Hide Favorites' : 'Show Favorites'}
       </button>
     </div>
   );
