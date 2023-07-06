@@ -1,4 +1,11 @@
-import React from 'React';
-import { render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-import StretchContainer from '../Client/containers/StretchContainer';
+xdescribe('test for stretchContainer.jsx', () => {
+  test('stretchContainer.js renders on the page', () => {
+    const tree = renderer
+      .create(<stretchContainer/>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});

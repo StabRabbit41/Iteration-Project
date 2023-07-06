@@ -1,11 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../Client/App.jsx';
+import HeaderContainer from '../Client/containers/HeaderContainer';
+
+//import MainContainer from OldMainContainer as an intentional failing test. 
+import MainContainer from '../Client/containers/OldMainContainer';
 
 xdescribe('test for menuContainer.jsx', () => {
   test('menuContainer.js renders on the page', () => {
     const tree = renderer
-      .create(<App/>)
+      .create(<HeaderContainer/>)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
