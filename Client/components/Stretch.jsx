@@ -38,10 +38,10 @@ const Stretch = (props) => {
 
   const favClicked = async () => {
     const userFavorites = state.favorites;
-    const favorite = props;
+    const favorite = thisExercise;
     const user = state.loggedInUser;
     console.log('fav clicked');
-    if (userFavorites.includes(props)) {
+    if (userFavorites.includes(thisExercise)) {
       console.log('...and deleting');
       const { favorites } = await fetchCall(user, favorite, 'DELETE');
       return dispatch(actions.updateREMOVE_FAVORITE(favorites));
@@ -54,11 +54,12 @@ const Stretch = (props) => {
     // add the exercise object to the favorites array
   };
 
-  // return stretch component with passed-in props from query to server
+  // return stretch component with passed-in thisExercise from query to server
   return (
     <div className='stretchCard'>
       <div className='cardHeadBox'>
-        <h3 className='cardHeader'>{props.name}</h3>
+        <h3 className='cardHeader'>{thisExercise.name}</h3>
+        <h3 className='cardHeader'>{thisExercise.name}</h3>
         {/* need logic to make Fav Icon then comment this back in and delete other */}
         <span className='favIcon'>
           <FAIcon onClick={favClicked} icon={regStar} />
@@ -66,13 +67,13 @@ const Stretch = (props) => {
       </div>
       <ul>
         <li>
-          <LabeledText label='Equipment' text={props.equipment} />
+          <LabeledText label='Equipment' text={thisExercise.equipment} />
         </li>
         <li>
-          <LabeledText label='Difficulty' text={props.difficulty} />
+          <LabeledText label='Difficulty' text={thisExercise.difficulty} />
         </li>
         <li>
-          <LabeledText label='Instructions' text={props.instructions} />
+          <LabeledText label='Instructions' text={thisExercise.instructions} />
         </li>
       </ul>
     </div>
