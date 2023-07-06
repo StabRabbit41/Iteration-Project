@@ -11,7 +11,7 @@
 
 import React from 'react';
 import HeaderContainer from './containers/HeaderContainer.jsx';
-// import TimerContainer from './containers/TimerContainer.jsx';
+import TimerContainer from './containers/TimerContainer.jsx';
 import MenuContainer from './containers/MenuContainer.jsx';
 import StretchContainer from './containers/StretchContainer.jsx';
 import './stylesheets/application.scss';
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div className="mainApp">
       <HeaderContainer />
-      {/* <TimerContainer /> */}
+      <TimerContainer />
       <MenuContainer />
       <StretchContainer />
     </div>

@@ -30,7 +30,7 @@ const fetchCall = async (user, favorite, method) => {
 };
 
 const Stretch = (props) => {
-  props = props.exercises;
+  const thisExercise = props.exercises;
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stretch);
   // insert any logic for the Stretch here
