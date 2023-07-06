@@ -76,6 +76,7 @@ userController.deleteUser = async (req, res, next) => {
 userController.addFavorite = async (req, res, next) => {
   const { username, favorite } = req.body;
   console.log("entering add favorite middleware");
+  // console.log("favorite", favorite)
 
   try {
     await User.findOneAndUpdate(

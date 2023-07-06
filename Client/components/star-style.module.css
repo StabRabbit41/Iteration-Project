@@ -1,0 +1,14 @@
+.star_true {
+  /* represents on state  */
+  color: #d4af37;
+}
+
+.star_false {
+  /* represents off state  */
+  color: black;
+}
+
+.star-button {
+  background: none;
+  border: none;
+}

@@ -10,13 +10,52 @@
  */
 
 import React from 'react';
-//import { ReactCountdownClock } from 'react-countdown-clock';
+import { useTimer } from 'react-timer-hook';
 
-// const TimerContainer = (prop) => {
-//   // return <ReactCountdownClock seconds={60}
-//   // color="#000"
-//   // alpha={0.9}
-//   // size={300} />;
-// };
+function MyTimer({ expiryTimestamp }) {
+  const { seconds, minutes, isRunning, start, pause, resume, restart } =
+    useTimer({
+      expiryTimestamp,
+      onExpire: () => console.warn('onExpire called'),
+    });
 
-// export default TimerContainer;
+  return (
+    <div className="timerDiv">
+      <div className="timeDisplay">
+        <span>{minutes}</span>:<span>{seconds}</span>
+      </div>
+      <div>
+        <button className="startBtn" onClick={start}>
+          Start
+        </button>
+        <button className="pauseBtn" onClick={pause}>
+          Pause
+        </button>
+        <button className="resumeBtn" onClick={resume}>
+          Resume
+        </button>
+        <button
+          className="restartBtn"
+          onClick={() => {
+            // Restarts to 5 minutes timer
+            const time = new Date();
+            time.setSeconds(time.getSeconds() + 60);
+            restart(time);
+          }}
+        >
+          Restart
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 60);
+  return (
+    <div>
+      <MyTimer expiryTimestamp={time} />
+    </div>
+  );
+}
