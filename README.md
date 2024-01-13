@@ -4,7 +4,7 @@ Introducing **Flexios**, your personalized stretching companion! Whether you're 
 
 - - - 
 
-### Features
+### Features 
 - 🔎 Search stretches by muscles and difficulty.
 - ⭐️ Save your favorite stretches. 
 - ⏳ Time each stretch within the app. 
