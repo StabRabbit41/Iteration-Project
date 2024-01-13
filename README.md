@@ -2,11 +2,15 @@
 
 Introducing **Flexios**, your personalized stretching companion! Whether you're a fitness enthusiast, an office worker looking to relieve tension, or someone on a wellness journey, Flexios is designed to enhance your flexibility and promote overall well-being.
 
+- - - 
+
 ### Features
 - 🔎 Search stretches by muscles and difficulty.
 - ⭐️ Save your favorite stretches. 
 - ⏳ Time each stretch within the app. 
 - 📖 Read detailed instructions for each stretch. 
+
+- - -
 
 ### Our app is powered by: 
 <div align="center">
